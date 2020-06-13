@@ -1,19 +1,12 @@
-<html>
-    <head>
-        <title>placements tips blog</title>
-    </head>
-    <body>
-        <div>
-            <h1><a href="/">Placements@iitbhu</a></h1>
-        </div>
-        <hr><br>
-        {% for post in posts %}
-            <div>
-            <p>Author: {{post.author}}        published: {{ post.published_date }} </p>
-            <h2><a href="">{{ post.title }}</a></h2>
-            <p>{{ post.text|linebreaksbr }}</p>
-            </div>
-        {% endfor %}
-        
-    </body>
-</html>
+{% extends 'blog/base.html' %}
+{% block content %}
+                    {% for post in posts %}
+                        <div class="post">
+                            <div class="date">
+                                <p>published: {{ post.published_date }}</p>
+                            </div>
+                            <h2><a href="{% url 'post_detail' pk=post.pk %}">{{ post.title }}</a></h2>
+            
+                        </div>
+                    {% endfor %}
+{% endblock %}
